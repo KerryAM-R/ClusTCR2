@@ -1,5 +1,4 @@
 #' Creates ClusTCR matrix
-#'
 #' This function identifies similar CDR3 amino acid sequences based on the same length and V_gene
 #' @param my_file uploaded file with junction_aa (CD3 sequences), variable gene.
 #' @param v_gene Variable gene column name
