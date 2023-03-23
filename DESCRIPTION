@@ -1,6 +1,6 @@
 Package: ClusTCR2
 Title: R version of ClusTCR: identifying similar CDR3 sequences 
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Kerry", "Mullan", , "kerry.mullan1@monash.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
@@ -11,7 +11,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Import:
   stringr,
@@ -44,3 +45,4 @@ Depends:
   ExperimentHub,
   SingleCellExperiment,
   ComplexHeatmap
+Config/testthat/edition: 3

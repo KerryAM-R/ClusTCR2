@@ -7,7 +7,7 @@
 mcl_cluster(my_file, max.iter = 100, inflation = 1, expansion = 1)
 }
 \arguments{
-\item{my_file}{Matrix file produce from \link{ClusTCR_list_to_matrix}}
+\item{my_file}{Matrix file produce from \link{ClusTCR}}
 
 \item{max.iter}{Number of iterations to find the steady state of MCL.}
 

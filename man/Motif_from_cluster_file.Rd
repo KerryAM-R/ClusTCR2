@@ -7,7 +7,7 @@
 Motif_from_cluster_file(ClusTCR, Clust_selected = NULL)
 }
 \arguments{
-\item{ClusTCR}{Cluster file produce from [ClusTCR[\link{2}]]}
+\item{ClusTCR}{Cluster file produce from \link{ClusTCR}}
 
 \item{Clust_selected}{Select which cluster to reivew}
 }

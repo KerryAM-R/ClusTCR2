@@ -1,5 +1,5 @@
 #' Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
-#' @param my_file Matrix file produce from [ClusTCR_list_to_matrix]
+#' @param my_file Matrix file produce from [ClusTCR]
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value

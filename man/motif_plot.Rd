@@ -7,7 +7,7 @@
 motif_plot(ClusTCR, Clust_column_name = "cluster", Clust_selected = NULL)
 }
 \arguments{
-\item{ClusTCR}{Matrix file produce from \link{ClusTCR_list_to_matrix}}
+\item{ClusTCR}{Matrix file produce from \link{mcl_cluster}}
 
 \item{Clust_column_name}{Name of clustering column from mcl_cluster file e.g. cluster}
 
