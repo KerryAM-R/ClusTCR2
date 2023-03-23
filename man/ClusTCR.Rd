@@ -24,5 +24,5 @@ This function identifies similar CDR3 amino acid sequences based on the same len
 \examples{
 csv = system.file("extdata","cdr3.csv", package = "ClusTCR2")
 my_file <- read.csv(csv)
-ClusTCR(my_file, allele = T)
+ClusTCR(my_file, allele = TRUE)
 }

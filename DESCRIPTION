@@ -2,7 +2,7 @@ Package: ClusTCR2
 Title: R version of ClusTCR: identifying similar CDR3 sequences 
 Version: 0.0.0.9000
 Authors@R: 
-    person("Kerry", "Mullan", , "first.last@example.com", role = c("aut", "cre"),
+    person("Kerry", "Mullan", , "kerry.mullan1@monash.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
@@ -14,9 +14,21 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Imports:
+Depends:
   stringr,
   DescTools,
   doParallel,
   plyr,
-  foreach
+  foreach,
+  VLF,
+  ggnet,
+  ggplot2, 
+  ggseqlogo,
+  motifStack,
+  network
+Remotes:
+  bioc::3.3/GO.db,
+  bioc::3.3/motifStack,
+  bioc::3.3/ExperimentHub,
+  bioc::3.3/SingleCellExperiment,
+  bioc::3.3/ComplexHeatmap

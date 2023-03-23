@@ -12,7 +12,6 @@
 #' @param alpha_selected Transparency of selected cluster (default = 1)
 #' @param alpha_non_selected Transparency of non-selected clusters (default = 0.5)
 #' @param colour Colour selected = "color_test" or all = "color_all"
-#' @import DescTools
 #' @importFrom ggnet ggnet2
 #' @import ggplot2
 #' @importFrom network as.network
@@ -22,9 +21,6 @@ netplot <- function(ClusTCR, Clust_selected=1,selected_col="purple",selected_tex
   net2 <- ClusTCR[[2]]
   df_clust <- ClusTCR[[1]]
   names(ClusTCR)
-
-
-
   col_unique <- as.data.frame(unique(df_clust[,names(df_clust) %in% Clust_column_name]))
   col_unique <- as.data.frame(col_unique[order(col_unique[,1]),])
   names(col_unique) <- Clust_column_name

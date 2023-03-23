@@ -1,17 +1,8 @@
-#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot] for )
+#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot] for ).
 #' @param ClusTCR Matrix file produce from [ClusTCR_list_to_matrix]
 #' @param mcl_cluster matrix file produce from [mcl_to_lable_clusters]
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster
-#' @param Clust_selected Select which cluster to label.
-#' @param selected_col Color of selected cluster (Default = purple)
-#' @param non_selected_col Color of selected cluster (Default = grey80)
-#' @param selected_text_col Color of selected cluster text (Default = black)
-#' @param non_selected_text_col Color of selected clusters text (Default = grey40)
-#' @param selected_text_size Text size of selected cluster (Default = 3)
-#' @param non_selected_text_size Text size of non-selected clusters (Default = 2)
-#' @param label Name to display on cluster: Name (CDR3_V_gene_Cluster), cluster, CDR3, V_gene, Len (length of CDR3 sequence)
-#' @param select_alpha Transparency of selected cluster
-#' @param select_alpha Transparency of non-selected clusters
+#' @param Clust_selected Select which cluster to display. Only one at a time.
 #' @importFrom  VLF aa.count.function
 #' @importFrom motifStack pcm2pfm
 #' @importFrom ggseqlogo ggseqlogo

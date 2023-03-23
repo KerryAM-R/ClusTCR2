@@ -7,15 +7,15 @@
 #' @param cores_selected Chose # of cores for parallel functions
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
-#' @importFrom DescTools StrDist
 #' @importFrom doParallel registerDoParallel
 #' @import plyr
-#' @import foreach
+#' @importFrom foreach %dopar%
+#' @import DescTools
 #' @export
 #' @examples
 #' csv = system.file("extdata","cdr3.csv", package = "ClusTCR2")
 #' my_file <- read.csv(csv)
-#' ClusTCR(my_file, allele = T)
+#' ClusTCR(my_file, allele = TRUE)
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4) {
   registerDoParallel(cores = cores_selected)
