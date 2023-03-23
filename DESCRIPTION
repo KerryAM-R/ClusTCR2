@@ -14,6 +14,22 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Import:
+  stringr,
+  DescTools,
+  doParallel,
+  plyr,
+  foreach,
+  VLF,
+  ggnet,
+  ggplot2, 
+  ggseqlogo,
+  network
+Remotes:
+  bioc::3.3/motifStack,
+  bioc::3.3/ExperimentHub,
+  bioc::3.3/SingleCellExperiment,
+  bioc::3.3/ComplexHeatmap
 Depends:
   stringr,
   DescTools,
@@ -25,9 +41,9 @@ Depends:
   ggplot2, 
   ggseqlogo,
   motifStack,
-  network
-Remotes:
-  bioc::3.3/motifStack,
-  bioc::3.3/ExperimentHub,
-  bioc::3.3/SingleCellExperiment,
-  bioc::3.3/ComplexHeatmap
+  network,
+  motifStack,
+  ExperimentHub,
+  SingleCellExperiment,
+  ComplexHeatmap
+
