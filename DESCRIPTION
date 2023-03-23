@@ -27,7 +27,7 @@ Depends:
   motifStack,
   network
 Remotes:
-  bioc::3.3/GO.db,
+  bioc::3.16/GO.db,
   bioc::3.3/motifStack,
   bioc::3.3/ExperimentHub,
   bioc::3.3/SingleCellExperiment,
