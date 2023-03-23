@@ -13,9 +13,6 @@
 #' @import DescTools
 #' @export
 #' @examples
-#' csv = system.file("extdata","cdr3.csv", package = "ClusTCR2")
-#' my_file <- read.csv(csv)
-#' ClusTCR(my_file, allele = TRUE)
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4) {
   registerDoParallel(cores = cores_selected)

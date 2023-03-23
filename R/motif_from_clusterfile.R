@@ -7,7 +7,6 @@
 #' @export
 
 Motif_from_cluster_file <- function(ClusTCR, Clust_selected=NULL) {
-
   motif_DF <- ClusTCR
   z1 <- as.data.frame(t(as.data.frame(strsplit(motif_DF$CDR3_Vgene,"_"))))
   motif_DF$motif <- z1$V1
