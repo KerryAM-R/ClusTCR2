@@ -1,5 +1,6 @@
 #' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot] for ).
 #' @param ClusTCR Cluster file produce from [ClusTCR[[2]]]
+#' @param Clust_selected Select which cluster to reivew
 #' @importFrom  VLF aa.count.function
 #' @importFrom motifStack pcm2pfm
 #' @importFrom ggseqlogo ggseqlogo

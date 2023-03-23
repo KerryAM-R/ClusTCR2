@@ -21,6 +21,8 @@ netplot(
 )
 }
 \arguments{
+\item{ClusTCR}{File produced from}
+
 \item{Clust_selected}{Select which cluster to label.}
 
 \item{selected_col}{Color of selected cluster (Default = purple)}
@@ -44,8 +46,6 @@ netplot(
 \item{alpha_non_selected}{Transparency of non-selected clusters (default = 0.5)}
 
 \item{colour}{Colour selected = "color_test" or all = "color_all"}
-
-\item{mcl_cluster}{list object projected from \link{mcl_cluster}}
 }
 \description{
 Code for displaying the network.

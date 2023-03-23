@@ -10,6 +10,12 @@ mcl_cluster(my_file, max.iter = 100, inflation = 1, expansion = 1)
 \item{my_file}{Matrix file produce from \link{ClusTCR_list_to_matrix}}
 
 \item{max.iter}{Number of iterations to find the steady state of MCL.}
+
+\item{inflation}{numeric value}
+
+\item{expansion}{numeric value}
+
+\item{j}{part of MCL clustering}
 }
 \description{
 Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function

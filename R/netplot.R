@@ -1,5 +1,5 @@
 #' Code for displaying the network.
-#' @param mcl_cluster list object projected from [mcl_cluster]
+#' @param ClusTCR File produced from
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster (Re-numbering the original_cluster), Original_cluster, Clust_size_order (Based on cluster size e.g. number of nodes)
 #' @param Clust_selected Select which cluster to label.
 #' @param selected_col Color of selected cluster (Default = purple)
@@ -14,6 +14,7 @@
 #' @param colour Colour selected = "color_test" or all = "color_all"
 #' @importFrom ggnet ggnet2
 #' @import ggplot2
+#' @importFrom stringr str_sub
 #' @importFrom network as.network
 #' @export
 

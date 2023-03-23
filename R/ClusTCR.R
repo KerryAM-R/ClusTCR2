@@ -10,9 +10,12 @@
 #' @importFrom doParallel registerDoParallel
 #' @import plyr
 #' @importFrom foreach %dopar%
+#' @importFrom foreach foreach
 #' @import DescTools
+#' @importFrom grDevices rainbow
+#' @importFrom stats setNames
+#' @importFrom utils head
 #' @export
-#' @examples
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4) {
   registerDoParallel(cores = cores_selected)

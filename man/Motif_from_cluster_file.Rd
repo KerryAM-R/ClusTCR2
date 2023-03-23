@@ -8,6 +8,8 @@ Motif_from_cluster_file(ClusTCR, Clust_selected = NULL)
 }
 \arguments{
 \item{ClusTCR}{Cluster file produce from [ClusTCR[\link{2}]]}
+
+\item{Clust_selected}{Select which cluster to reivew}
 }
 \description{
 Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).

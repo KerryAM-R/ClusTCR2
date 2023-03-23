@@ -1,6 +1,5 @@
 #' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot] for ).
 #' @param ClusTCR Matrix file produce from [ClusTCR_list_to_matrix]
-#' @param mcl_cluster matrix file produce from [mcl_to_lable_clusters]
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster
 #' @param Clust_selected Select which cluster to display. Only one at a time.
 #' @importFrom  VLF aa.count.function

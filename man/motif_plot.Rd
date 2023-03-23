@@ -12,8 +12,6 @@ motif_plot(ClusTCR, Clust_column_name = "cluster", Clust_selected = NULL)
 \item{Clust_column_name}{Name of clustering column from mcl_cluster file e.g. cluster}
 
 \item{Clust_selected}{Select which cluster to display. Only one at a time.}
-
-\item{mcl_cluster}{matrix file produce from \link{mcl_to_lable_clusters}}
 }
 \description{
 Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).
