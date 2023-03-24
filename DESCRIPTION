@@ -1,10 +1,10 @@
 Package: ClusTCR2
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: R version of ClusTCR: identifying similar CDR3 sequences 
+Version: 0.0.1
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+   person("Kerry", "Mullan", , "kerry.mullan1@monash.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Performs CDR3 clustering using MCL with visulisation as a network plot and motif. 
 License: CC0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
