@@ -1,48 +1,12 @@
 Package: ClusTCR2
-Title: R version of ClusTCR: identifying similar CDR3 sequences 
-Version: 0.0.1
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
 Authors@R: 
-    person("Kerry", "Mullan", , "kerry.mullan1@monash.edu", role = c("aut", "cre"),
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
-Import:
-  stringr,
-  DescTools,
-  doParallel,
-  plyr,
-  foreach,
-  VLF,
-  ggnet,
-  ggplot2, 
-  ggseqlogo,
-  network,
-Remotes:
-  bioc::3.3/motifStack,
-  bioc::3.3/ExperimentHub,
-  bioc::3.3/SingleCellExperiment,
-  bioc::3.3/ComplexHeatmap
-Depends:
-  stringr,
-  DescTools,
-  doParallel,
-  plyr,
-  foreach,
-  VLF,
-  ggnet,
-  ggplot2, 
-  ggseqlogo,
-  motifStack,
-  network,
-  ExperimentHub,
-  SingleCellExperiment,
-  ComplexHeatmap
-Config/testthat/edition: 3
