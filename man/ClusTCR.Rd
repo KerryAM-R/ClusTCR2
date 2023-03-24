@@ -15,8 +15,6 @@ ClusTCR(my_file, allele = NULL, v_gene = "v_call", cores_selected = 4)
 \item{v_gene}{Variable gene column name}
 
 \item{cores_selected}{Chose # of cores for parallel functions}
-
-\item{j}{For loop parameter}
 }
 \value{
 X by Y matrix of strucutrally related CDR3 sequences.

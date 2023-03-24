@@ -4,7 +4,6 @@
 #' @param v_gene Variable gene column name
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
 #' @param cores_selected Chose # of cores for parallel functions
-#' @param j For loop parameter
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
 #' @importFrom doParallel registerDoParallel
