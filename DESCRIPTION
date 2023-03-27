@@ -24,3 +24,6 @@ Imports:
     plyr,
     stringr,
     VLF
+Remotes:
+    jianhong/motifStack,
+    briatte/ggnet
