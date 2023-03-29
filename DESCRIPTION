@@ -3,9 +3,9 @@ Title: R version of ClusTCR to identifying similar CDR3 sequences based on MCL c
 Version: 0.0.1
 Authors@R: c(person("Kerry A.", "Mullan", role = c("aut", "cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
-              person("Sebastiaan", "Valkiers", role = "ctb"),
-              person("Kris", "Laukens", role = "ctb"),
-              person("Pieter", "Meysman", role = "ctb",
+              person("Sebastiaan", "Valkiers", role = c("aut","ctb")),
+              person("Kris", "Laukens", role = c("aut","ctb")),
+              person("Pieter", "Meysman", role = c("aut","ctb"),
                      email = ""))
 Description: Performs CDR3 clustering using MCL with visualisation as a network plot and motif. 
 License: CC0
