@@ -1,4 +1,4 @@
-# ClusTCR^2
+# ClusTCR<sup>2<sup>
 
 ### install 
 
