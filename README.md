@@ -1,18 +1,11 @@
-# ClusTCR2
+# ClusTCR^2
 
 ### install 
 
-```html
-<h2>Citing ClusTCR2</h2>
 
-<pre>
-    <div class="container">
-        <div class="block two first">
-            <h2></h2>
-            <div class="wrap">
-            //https://academic.oup.com/bioinformatics/article/37/24/4865/6300511
-            </div>
-        </div>
-    </div>
-</pre>
-```
+# Cite both R applcation and the ClusTCR paper
+
+
+ClusTCR: a Python interface for rapid clustering of large sets of CDR3 sequences with unknown antigen specificity <a href="https://academic.oup.com/bioinformatics/article/37/24/4865/6300511" target="_blank">ClusTCR paper</a>
+
+
