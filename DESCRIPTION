@@ -8,6 +8,11 @@ Authors@R: c(person("Kerry A.", "Mullan", role = c("aut", "cre"),
               person("Kris", "Laukens", role = c("aut","ctb")),
               person("Pieter", "Meysman", role = c("aut","ctb"),
                      email = ""))
+                     
+Author: Kerry A. Mullan [aut, cre],
+  Sebastiaan Valkiers [aut],
+  Kris Laukens [aut],
+  Pieter Meysman [aut]
 Description: Performs CDR3 clustering using MCL with visualisation as a network plot and motif. 
 Maintainer: Kerry A. Mullan, <Kerry.Mullan@uantwerpen.be>
 License: CC0
