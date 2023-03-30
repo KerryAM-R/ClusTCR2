@@ -16,6 +16,12 @@
 #' @importFrom utils head
 #' @export
 
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+if (!require("BiocParallel", quietly = TRUE))
+  BiocManager::install("BiocParallel")
+
+
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4) {
   registerDoParallel(cores = cores_selected)
   amino_acid_test_top <- my_file
