@@ -36,3 +36,4 @@ Imports:
 Remotes:
     jianhong/motifStack,
     briatte/ggnet
+biocViews: GeneTarget, SingleCell, BiocParallel
