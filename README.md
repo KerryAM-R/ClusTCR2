@@ -2,6 +2,7 @@
 
 ### install ClusTCR<sup>2<sup>
 `
+install.packages("devtools")
 devtools::install_github("KerryAM-R/ClusTCR2")
 `
 

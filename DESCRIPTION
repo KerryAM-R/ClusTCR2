@@ -1,6 +1,6 @@
 Package: ClusTCR2
-Title: R version of ClusTCR to identifying similar CDR3 sequences based on MCL clustering.
-Version: 0.0.1
+Title: R version of ClusTCR to identifying similar CDR3 sequences based on MCL clustering
+Version: 1.0.1
 Date: 2023-29-03
 Authors@R: c(person("Kerry A.", "Mullan", role = c("aut", "cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
@@ -36,4 +36,7 @@ Imports:
 Remotes:
     jianhong/motifStack,
     briatte/ggnet
-biocViews: GeneTarget, SingleCell, BiocParallel
+biocViews: 
+  GeneTarget, 
+  SingleCell, 
+  BiocParallel

@@ -1,4 +1,4 @@
-#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot] for ).
+#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot_ClusTCR2] for ).
 #' @param ClusTCR Matrix file produce from [mcl_cluster]
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster
 #' @param Clust_selected Select which cluster to display. Only one at a time.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/motif_plot.R
 \name{motif_plot}
 \alias{motif_plot}
-\title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).}
+\title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).}
 \usage{
 motif_plot(ClusTCR, Clust_column_name = "cluster", Clust_selected = NULL)
 }
@@ -14,5 +14,5 @@ motif_plot(ClusTCR, Clust_column_name = "cluster", Clust_selected = NULL)
 \item{Clust_selected}{Select which cluster to display. Only one at a time.}
 }
 \description{
-Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).
+Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).
 }
