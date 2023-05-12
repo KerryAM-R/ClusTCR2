@@ -28,7 +28,8 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
 
   if (length(amino_acid_test_top2[,names(amino_acid_test_top2) %in% "v_call"]) > 0) {
     amino_acid_test_top2$v_call <- gsub("[*]..","",amino_acid_test_top2[,names(amino_acid_test_top2) %in% v_gene])
-    v_call <- as.data.frame(str_split_fixed(amino_acid_test_top2$v_call, '-', 2))
+    # v_call <- as.data.frame(str_split_fixed(amino_acid_test_top2$v_call, '-', 2))
+    v_call <- as.data.frame(amino_acid_test_top2$v_call)
     v_call
     amino_acid_test_top2$v_call <- v_call$V1
     amino_acid_test_top2$count <- 1
