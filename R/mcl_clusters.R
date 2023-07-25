@@ -9,6 +9,8 @@
 
 
 mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
+  stat_process <- Sys.time()
+
   adj.norm <- my_file
   diag(adj.norm) <- 1
   a <- 1
@@ -129,9 +131,11 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
   df <- df[order(df$order),]
   names(df)[1:3] <- c("Original_cluster","nodes","#_of_connections")
   df$CDR3_Vgene <- colnames(my_file)
-  message(paste("Completed process, can now display data as either motif or netplot"))
+
+  stat_end_process <- Sys.time()
+  diff <- stat_end_process - stat_process
+  message(paste("this process took", round(diff,2),"seconds"))
+  message(paste("Completed process, can now display data as either motif or netplot."))
   mylist<-list(Cluster_lab = df,
                Normalised_tabel = infl.norm)
-
-
 }
