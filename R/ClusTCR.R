@@ -46,7 +46,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
     names(edge) <- c("source", "target", "Val")
     head(edge)
 
-    ptm <- proc.time()
+    message("creating empty matrixes")
     res.all <- foreach(j=1:dim(df_len)[1]) %dopar% {
       df.clust_1 <- subset(amino_acid_test_top2,amino_acid_test_top2$V_call_len==df_len[j,1])
       if (length(df.clust_1)>1) {
@@ -56,7 +56,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
         res.all
       }
     }
-
+    message("Performing edit distance")
     sim2 <- foreach(j=1:dim(df_len)[1]) %dopar% {
       df <- as.data.frame(res.all[[j]])
       for(r in 1:dim(df)[1]) {
@@ -72,6 +72,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
         }
       }
       sim2 <- res.all[[j]]
+      message(paste("Completed matrix",j))
     }
 
     f <- function(m) {
@@ -82,6 +83,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
       sim2 <- f(sim2[[j]])
     }
 
+      message(paste("keeping edit distance of 1"))
     ham.vals <- foreach(j=1:dim(df_len)[1]) %dopar% {
       ham.vals <- setNames(
         cbind(
@@ -92,6 +94,8 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
       ham.vals_2 <- subset(ham.vals,ham.vals$Val==1)
     }
 
+    message(paste("Creating target and source object"))
+
     df_net3 <- as.data.frame((ham.vals[[1]][1:2]))
     head(df_net3)
     for (i in 2:dim(df_len)[1]) {
@@ -101,10 +105,12 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
 
     df_net3$count <- 1
     df_net3 <- df_net3[order(df_net3$source),]
+    message(paste("Creating matrix for MCL"))
     df_mat <- (table(as.character(df_net3$source), as.character(df_net3$target)))
+    message(paste("Matrix complete"))
     df_mat
   }
   else {
-    print("Incorrect V gene column")
+    message("Incorrect V gene column")
   }
 }
