@@ -8,7 +8,7 @@
 #' @export
 
 
-mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
+mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
   adj.norm <- my_file
   diag(adj.norm) <- 1
   a <- 1
@@ -29,9 +29,8 @@ mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
     }
     adj.norm <- infl.norm
     a <- a + 1
+    message(paste("Iteration complete:", a))
   }
-
-
 
   # if (!is.na(infl.norm[1, 1]) & ident) {
   count <- 0
@@ -39,7 +38,10 @@ mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
     if (sum(abs(infl.norm[i, ])) != 0) {
       count <- count + 1
     }
+    #
   }
+
+  message(paste("Inflation complete"))
 
   neu <- matrix(nrow = count, ncol = ncol(infl.norm))
   # View(neu)
@@ -51,7 +53,10 @@ mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
       }
       zeile <- zeile + 1
     }
+    # message(paste("Processing:", zeile))
   }
+
+  message(paste("MCL complete"))
 
 # Changes neu matrix to 1 and 0
   for (j in 1:ncol(neu)) {
@@ -59,8 +64,8 @@ mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
       neu[i,j] <- ifelse(neu[i,j]> 0,1,0)
     }
   }
-  nrow(neu)
-  ncol(neu)
+
+  message(paste("Finished correcting matrix to binary"))
 
   for (i in 1:nrow(neu)) {
     num <- ifelse(neu[,i]>1, which(neu[,i] > 1),
@@ -70,36 +75,21 @@ mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
     neu[,i] <- num
   }
 
-  for (i in 1:nrow(neu)) {
-    num_mat <- unique(neu[i,])
-    num_mat <- num_mat[order(num_mat)]
-    num_mat2 <- num_mat[num_mat>0][1]
-    neu[i,] <- ifelse(neu[i,]>0,num_mat2,0)
-    neu[,i] <- ifelse(neu[,i]>0,num_mat2,0)
-  }
+  message(paste("relabelling nodes for MCL start."))
 
-  for (i in 1:nrow(neu)) {
-    num_mat <- unique(neu[i,])
-    num_mat <- num_mat[order(num_mat)]
-    num_mat2 <- num_mat[num_mat>0][1]
-    neu[i,] <- ifelse(neu[i,]>0,num_mat2,0)
-    neu[,i] <- ifelse(neu[,i]>0,num_mat2,0)
-  }
-
-  for (i in 1:nrow(neu)) {
-    num_mat <- unique(neu[i,])
-    num_mat <- num_mat[order(num_mat)]
-    num_mat2 <- num_mat[num_mat>0][1]
-    neu[i,] <- ifelse(neu[i,]>0,num_mat2,0)
-    neu[,i] <- ifelse(neu[,i]>0,num_mat2,0)
-  }
-
-  for (i in 1:nrow(neu)) {
-    num_mat <- unique(neu[i,])
-    num_mat <- num_mat[order(num_mat)]
-    num_mat2 <- num_mat[num_mat>0][1]
-    neu[i,] <- ifelse(neu[i,]>0,num_mat2,0)
-    neu[,i] <- ifelse(neu[,i]>0,num_mat2,0)
+  for (r in 1:6) {
+    r = r
+    start_time <- Sys.time()
+    for (i in 1:nrow(neu)) {
+      num_mat <- unique(neu[i,])
+      num_mat <- num_mat[order(num_mat)]
+      num_mat2 <- num_mat[num_mat>0][1]
+      neu[i,] <- ifelse(neu[i,]>0,num_mat2,0)
+      neu[,i] <- ifelse(neu[,i]>0,num_mat2,0)
+    }
+    end_time <- Sys.time()
+    diff <- end_time - start_time
+    message(paste0("iteration ",r," completed in: ",diff))
   }
 
   df <- matrix(ncol=3,nrow=nrow(neu))
@@ -139,6 +129,7 @@ mcl_cluster <- function(my_file, max.iter=100, inflation = 1, expansion = 1) {
   df <- df[order(df$order),]
   names(df)[1:3] <- c("Original_cluster","nodes","#_of_connections")
   df$CDR3_Vgene <- colnames(my_file)
+  message(paste("Completed process, can now display data as either motif or netplot"))
   mylist<-list(Cluster_lab = df,
                Normalised_tabel = infl.norm)
 

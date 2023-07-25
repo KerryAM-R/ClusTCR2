@@ -17,6 +17,7 @@
 #' @export
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4) {
+
   registerDoParallel(cores = cores_selected)
   amino_acid_test_top <- my_file
   amino_acid_test_top2 <- amino_acid_test_top[!duplicated(amino_acid_test_top$junction_aa), ]
@@ -48,34 +49,49 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
     ptm <- proc.time()
     res.all <- foreach(j=1:dim(df_len)[1]) %dopar% {
       df.clust_1 <- subset(amino_acid_test_top2,amino_acid_test_top2$V_call_len==df_len[j,1])
-      res.all <- as.data.frame(matrix(nrow = dim(df.clust_1)[1], ncol =  dim(df.clust_1)[1]))
-      rownames(res.all) <- df.clust_1$Vgene_cdr3
-      names(res.all) <- df.clust_1$Vgene_cdr3
-      res.all
+      if (length(df.clust_1)>1) {
+        res.all <- as.data.frame(matrix(nrow = dim(df.clust_1)[1], ncol =  dim(df.clust_1)[1]))
+        rownames(res.all) <- df.clust_1$Vgene_cdr3
+        names(res.all) <- df.clust_1$Vgene_cdr3
+        res.all
+      }
     }
 
     sim2 <- foreach(j=1:dim(df_len)[1]) %dopar% {
       df <- as.data.frame(res.all[[j]])
       for(r in 1:dim(df)[1]) {
         for (i in 1:dim(df)[1]) {
-
-          res <- StrDist(rownames(df)[i], names(df)[r], method = "hamming", mismatch = 1, gap = 1, ignore.case = FALSE)
-          res.all[[j]][i,r] <- as.numeric(res)
-
+          if (r == i) {
+          }
+          else if (i>r) {
+          }
+          else {
+            res <- StrDist(rownames(df)[i], names(df)[r], method = "hamming", mismatch = 1, gap = 1, ignore.case = FALSE)
+            res.all[[j]][i,r] <- as.numeric(res)
+          }
         }
       }
       sim2 <- res.all[[j]]
     }
 
+    f <- function(m) {
+      m[lower.tri(m)] <- t(m)[lower.tri(m)]
+      m
+    }
+      fsim2 <- foreach(j=1:dim(df_len)[1]) %dopar% {
+      sim2 <- f(sim2[[j]])
+    }
+
     ham.vals <- foreach(j=1:dim(df_len)[1]) %dopar% {
       ham.vals <- setNames(
         cbind(
-          rev(expand.grid(rownames(sim2[[j]]), names(sim2[[j]]))),
-          c(t(sim2[[j]]))
+          rev(expand.grid(rownames(fsim2[[j]]), names(fsim2[[j]]))),
+          c(t(fsim2[[j]]))
         ), c("source", "target", "Val")
       )
       ham.vals_2 <- subset(ham.vals,ham.vals$Val==1)
     }
+
     df_net3 <- as.data.frame((ham.vals[[1]][1:2]))
     head(df_net3)
     for (i in 2:dim(df_len)[1]) {
@@ -84,21 +100,11 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
     }
 
     df_net3$count <- 1
-
     df_net3 <- df_net3[order(df_net3$source),]
-
     df_mat <- (table(as.character(df_net3$source), as.character(df_net3$target)))
-    # df_mcl <- mcl(df_mat, addLoops = T, inflation = 2)
-    #
-    # dim(df_mat)
-    # dim(df_mcl)
-    # rownames(df_mat) <- paste(rownames(df_mat),df_mcl$Cluster,sep="_")
-    # colnames(df_mat) <- paste(colnames(df_mat),df_mcl$Cluster,sep="_")
     df_mat
   }
   else {
     print("Incorrect V gene column")
   }
-
-
 }
