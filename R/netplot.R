@@ -43,7 +43,6 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
   net = as.network(net2,ignore.eval = FALSE, loops = F, names.eval = 'testValue')
 
 
-
   z <- net$gal$n
   for (i in 1:z) {
     net$val[[i]]$Name <- gsub(".* ", "", net$val[[i]]$vertex.names)
