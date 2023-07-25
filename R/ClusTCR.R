@@ -58,6 +58,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
     }
     message("Performing edit distance")
     sim2 <- foreach(j=1:dim(df_len)[1]) %dopar% {
+      message(paste("Completed matrix",j))
       df <- as.data.frame(res.all[[j]])
       for(r in 1:dim(df)[1]) {
         for (i in 1:dim(df)[1]) {
@@ -70,9 +71,10 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
             res.all[[j]][i,r] <- as.numeric(res)
           }
         }
+        message(paste("Completed matrix",j))
       }
       sim2 <- res.all[[j]]
-      message(paste("Completed matrix",j))
+
     }
 
     f <- function(m) {
