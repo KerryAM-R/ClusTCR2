@@ -49,7 +49,7 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
  }
 
   else if (all.colour == "terrain.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
-    col_unique$col <- col.terrain(dim(col_unique)[1])
+    col_unique$col <- terrain.colors(dim(col_unique)[1])
   }
 
   else if (all.colour == "topo.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
@@ -59,7 +59,9 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
   else if (all.colour == "hcl.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
     col_unique$col <- hcl.colors(dim(col_unique)[1], palette = "viridis")
   }
-
+  else if (all.colour == "random") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
+    col_unique$col <- distinctColorPalette(dim(col_unique)[1])
+  }
   else {
     col_unique$col <- gg_fill_hue(dim(col_unique)[1])
   }
