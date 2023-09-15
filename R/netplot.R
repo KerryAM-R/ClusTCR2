@@ -40,23 +40,23 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
   col_unique <- as.data.frame(col_unique[order(col_unique[,1]),])
   names(col_unique) <- Clust_column_name
 
-  if (all.colour = "rainbow") {
+  if (all.colour == "rainbow") {
     col_unique$col <- rev(rainbow(dim(col_unique)[1]))
   }
 
- else if (all.colour = "heat.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
+ else if (all.colour == "heat.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
    col_unique$col <- heat.colors(dim(col_unique)[1])
  }
 
-  else if (all.colour = "terrain.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
+  else if (all.colour == "terrain.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
     col_unique$col <- col.terrain(dim(col_unique)[1])
   }
 
-  else if (all.colour = "topo.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
+  else if (all.colour == "topo.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
     col_unique$col <- topo.colors(dim(col_unique)[1])
   }
 
-  else if (all.colour = "hcl.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
+  else if (all.colour == "hcl.colors") { #(c("rainbow","random","heat.colors","terrain.colors","topo.colors","hcl.colors"))
     col_unique$col <- hcl.colors(dim(col_unique)[1], palette = "viridis")
   }
 
