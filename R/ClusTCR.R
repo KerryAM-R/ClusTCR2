@@ -8,17 +8,14 @@
 #' @importFrom stringr str_split_fixed
 #' @importFrom doParallel registerDoParallel
 #' @import plyr
-#' @importFrom foreach %dopar%
-#' @importFrom foreach foreach
 #' @import DescTools
 #' @importFrom grDevices rainbow
 #' @importFrom stats setNames
 #' @importFrom utils head
 #' @export
 
-ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4) {
+ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 
-  registerDoParallel(cores = cores_selected)
   amino_acid_test_top <- my_file
   amino_acid_test_top2 <- amino_acid_test_top[!duplicated(amino_acid_test_top$junction_aa), ]
   amino_acid_test_top2$len <- nchar(amino_acid_test_top2$junction_aa)
@@ -36,28 +33,34 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
     amino_acid_test_top2$count <- 1
     amino_acid_test_top2$Vgene_cdr3 <- paste(amino_acid_test_top2$junction_aa,amino_acid_test_top2$v_call,sep = "_")
     amino_acid_test_top2$V_call_len <- paste(amino_acid_test_top2$len,amino_acid_test_top2$v_call,sep = "_")
-    unique(amino_acid_test_top2$V_call_len)
+
     df_len <- as.data.frame(unique(amino_acid_test_top2$V_call_len))
     names(df_len) <- "Len"
     df_len <- as.data.frame(df_len[order(df_len$Len),])
     names(df_len) <- "Len"
     df_len
-    edge <- as.data.frame(matrix(nrow = 1, ncol = 3))
-    names(edge) <- c("source", "target", "Val")
-    head(edge)
+
+    df.clust_1 <- subset(amino_acid_test_top2,amino_acid_test_top2$V_call_len==df_len[j,1])
 
     message("creating empty matrixes")
-    res.all <- foreach(j=1:dim(df_len)[1]) %dopar% {
+    res.all <- as.list(NULL)
+    for(j in 1:dim(df_len)[1]) {
       df.clust_1 <- subset(amino_acid_test_top2,amino_acid_test_top2$V_call_len==df_len[j,1])
-      if (length(df.clust_1)>1) {
-        res.all <- as.data.frame(matrix(nrow = dim(df.clust_1)[1], ncol =  dim(df.clust_1)[1]))
-        rownames(res.all) <- df.clust_1$Vgene_cdr3
-        names(res.all) <- df.clust_1$Vgene_cdr3
+      # print(dim(df.clust_1)[1])
+
+      if (dim(df.clust_1)[1]>1) {
+        res.all[[j]] <- as.data.frame(matrix(nrow = dim(df.clust_1)[1], ncol =  dim(df.clust_1)[1]))
+        rownames(res.all[[j]]) <- df.clust_1$Vgene_cdr3
+        names(res.all[[j]]) <- df.clust_1$Vgene_cdr3
         res.all
       }
     }
+
+    res.all <- res.all[!sapply(res.all,is.null)]
+    res.all
     message("Performing edit distance")
-    sim2 <- foreach(j=1:dim(df_len)[1]) %dopar% {
+    length(res.all)
+    for (j in 1:length(res.all))  {
       df <- as.data.frame(res.all[[j]])
       for(r in 1:dim(df)[1]) {
         for (i in 1:dim(df)[1]) {
@@ -71,43 +74,70 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call", cores_selected = 4)
           }
         }
       }
-      sim2 <- res.all[[j]]
+      sim2[[j]] <- res.all[[j]]
     }
 
     f <- function(m) {
       m[lower.tri(m)] <- t(m)[lower.tri(m)]
       m
     }
-      fsim2 <- foreach(j=1:dim(df_len)[1]) %dopar% {
-      sim2 <- f(sim2[[j]])
+
+    length(res.all)
+    fsim2 <- as.list(NULL)
+
+    for (j in 1:length(res.all)) {
+      fsim2[[j]] <- f(sim2[[j]])
     }
 
-      message(paste("keeping edit distance of 1"))
-    ham.vals <- foreach(j=1:dim(df_len)[1]) %dopar% {
-      ham.vals <- setNames(
+    fsim2
+
+    message(paste("keeping edit distance of 1"))
+
+
+    ham.vals <-  setNames(
+      cbind(
+        rev(expand.grid(rownames(fsim2[[1]]), names(fsim2[[1]]))),
+        c(t(fsim2[[1]]))
+      ), c("source", "target", "Val")
+    )
+
+    for (j in 2:length(res.all)) {
+      ham.vals2 <- setNames(
         cbind(
           rev(expand.grid(rownames(fsim2[[j]]), names(fsim2[[j]]))),
           c(t(fsim2[[j]]))
         ), c("source", "target", "Val")
       )
-      ham.vals_2 <- subset(ham.vals,ham.vals$Val==1)
+
+      ham.vals3 <- rbind(ham.vals,ham.vals2)
     }
 
-    message(paste("Creating target and source object"))
+    ham.vals_2 <- subset(ham.vals3,ham.vals3$Val==1)
 
-    df_net3 <- as.data.frame((ham.vals[[1]][1:2]))
-    head(df_net3)
-    for (i in 2:dim(df_len)[1]) {
-      df_net2 <- as.data.frame((ham.vals[[i]][1:2]))
-      df_net3 <- rbind(df_net3,df_net2)
+    dim(ham.vals_2)[1]
+
+    if ( dim(ham.vals_2)[1] == 0 ) {
+      message("No clusters == 1 edit distance and therefore MCL not performed")
+      as.data.frame("No clusters = 1 edit distance and therefore MCL not performed")
     }
 
-    df_net3$count <- 1
-    df_net3 <- df_net3[order(df_net3$source),]
-    message(paste("Creating matrix for MCL"))
-    df_mat <- (table(as.character(df_net3$source), as.character(df_net3$target)))
-    message(paste("Matrix complete"))
-    df_mat
+    else {
+      message(paste("Creating target and source object"))
+
+      df_net3 <- as.data.frame((ham.vals[[1]][1:2]))
+      head(df_net3)
+      for (i in 2:dim(df_len)[1]) {
+        df_net2 <- as.data.frame((ham.vals[[i]][1:2]))
+        df_net3 <- rbind(df_net3,df_net2)
+      }
+
+      df_net3$count <- 1
+      df_net3 <- df_net3[order(df_net3$source),]
+      message(paste("Creating matrix for MCL"))
+      df_mat <- (table(as.character(df_net3$source), as.character(df_net3$target)))
+      message(paste("Matrix complete"))
+      df_mat
+    }
   }
   else {
     message("Incorrect V gene column")
