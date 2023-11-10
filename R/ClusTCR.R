@@ -92,14 +92,9 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
     message(paste("keeping edit distance of 1"))
 
 
-    ham.vals <-  setNames(
-      cbind(
-        rev(expand.grid(rownames(fsim2[[1]]), names(fsim2[[1]]))),
-        c(t(fsim2[[1]]))
-      ), c("source", "target", "Val")
-    )
+    ham.vals <- as.list(NULL)
 
-    for (j in 2:length(res.all)) {
+    for (j in 1:length(fsim2)) {
       ham.vals2 <- setNames(
         cbind(
           rev(expand.grid(rownames(fsim2[[j]]), names(fsim2[[j]]))),
@@ -107,25 +102,42 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
         ), c("source", "target", "Val")
       )
 
-      ham.vals3 <- rbind(ham.vals,ham.vals2)
+      setNames(
+        cbind(
+          rev(expand.grid(rownames(fsim2[[j]]), names(fsim2[[j]]))),
+          c(t(fsim2[[j]]))
+        ), c("source", "target", "Val")
+      )
+      ham.vals[[j]] <-  ham.vals2
     }
 
-    ham.vals_2 <- subset(ham.vals3,ham.vals3$Val==1)
+    ham.vals2 <- as.list(NULL)
 
-    dim(ham.vals_2)[1]
+    for (i in 1:length(ham.vals)) {
 
-    if ( dim(ham.vals_2)[1] == 0 ) {
+      if (dim(subset(ham.vals[[i]],ham.vals[[i]]$Val==1))[1]>0) {
+        ham.vals2[[i]] <- subset(ham.vals[[i]],ham.vals[[i]]$Val==1)
+      }
+      else {
+        ham.vals2[[i]] <- NULL
+
+      }
+    }
+
+    ham.vals2 <- ham.vals2[!sapply(ham.vals2,is.null)]
+
+    if ( length(ham.vals2) == 0 ) {
       message("No clusters == 1 edit distance and therefore MCL not performed")
-      as.data.frame("No clusters = 1 edit distance and therefore MCL not performed")
+      as.data.frame("No clusters found")
     }
 
     else {
       message(paste("Creating target and source object"))
 
-      df_net3 <- as.data.frame((ham.vals[[1]][1:2]))
-      head(df_net3)
-      for (i in 2:dim(df_len)[1]) {
-        df_net2 <- as.data.frame((ham.vals[[i]][1:2]))
+      df_net3 <- as.data.frame((ham.vals2[[1]][1:2]))
+
+      for (i in 2:length(ham.vals2)[1]) {
+        df_net2 <- as.data.frame((ham.vals2[[i]][1:2]))
         df_net3 <- rbind(df_net3,df_net2)
       }
 
