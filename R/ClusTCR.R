@@ -38,9 +38,6 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
     names(df_len) <- "Len"
     df_len <- as.data.frame(df_len[order(df_len$Len),])
     names(df_len) <- "Len"
-    df_len
-
-    df.clust_1 <- subset(amino_acid_test_top2,amino_acid_test_top2$V_call_len==df_len[j,1])
 
     message("creating empty matrixes")
     res.all <- as.list(NULL)
