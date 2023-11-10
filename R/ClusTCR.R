@@ -55,6 +55,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 
     res.all <- res.all[!sapply(res.all,is.null)]
     res.all
+    sim2 <- as.list(NULL)
     message("Performing edit distance")
     length(res.all)
     for (j in 1:length(res.all))  {
