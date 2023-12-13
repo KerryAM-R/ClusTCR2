@@ -26,7 +26,6 @@ Imports:
     ggnet,
     ggplot2,
     ggseqlogo,
-    motifStack,
     network,
     plyr,
     stringr,
