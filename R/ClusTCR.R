@@ -6,7 +6,6 @@
 #' @param cores_selected Chose # of cores for parallel functions
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
-#' @importFrom doParallel registerDoParallel
 #' @import plyr
 #' @import DescTools
 #' @importFrom grDevices rainbow
