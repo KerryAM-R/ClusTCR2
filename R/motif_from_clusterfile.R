@@ -2,12 +2,12 @@
 #' @param ClusTCR Cluster file produce from [ClusTCR]
 #' @param Clust_selected Select which cluster to reivew
 #' @importFrom  VLF aa.count.function
-#' @importFrom motifStack pcm2pfm
 #' @importFrom ggseqlogo ggseqlogo
 #' @import ggplot2
 #' @export
 
 Motif_from_cluster_file <- function(ClusTCR, Clust_selected=NULL) {
+  source(system.file("Functions","motifStack.functions.R",package = "ClusTCR2"))
   motif_DF <- ClusTCR
   z1 <- as.data.frame(t(as.data.frame(strsplit(motif_DF$CDR3_Vgene,"_"))))
   motif_DF$motif <- z1$V1
@@ -18,16 +18,11 @@ Motif_from_cluster_file <- function(ClusTCR, Clust_selected=NULL) {
 
 
     motif_DF_interest <- motif_DF[motif_DF$Clust_size_order %in% c(Clust_selected),]
-
     # subset(motif_DF,motif_DF$cluster==Clust_selected)
     motif <- as.data.frame(t(as.data.frame(strsplit(motif_DF_interest$motif, ""))))
     len <- nchar(unique(motif_DF_interest$motif))[1]
-
     motif_count <- aa.count.function(cbind(x=1,y=2,motif),len)
-
     motif_count1_aa<-pcm2pfm(motif_count)
-
-
     ggseqlogo(motif_count, seq_type='aa', method='p') +
       ylab('bits')+
       geom_hline(yintercept=0) +
