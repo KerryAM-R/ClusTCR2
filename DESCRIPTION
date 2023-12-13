@@ -31,7 +31,6 @@ Imports:
     stringr,
     VLF
 Remotes:
-    jianhong/motifStack,
     briatte/ggnet
 biocViews: 
   GeneTarget, 
