@@ -3,7 +3,6 @@
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster
 #' @param Clust_selected Select which cluster to display. Only one at a time.
 #' @importFrom  VLF aa.count.function
-#' @importFrom motifStack pcm2pfm
 #' @importFrom ggseqlogo ggseqlogo
 #' @import ggplot2
 #' @export
