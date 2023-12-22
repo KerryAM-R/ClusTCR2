@@ -18,7 +18,8 @@ netplot_ClusTCR2(
   non_selected_text_col = "grey40",
   alpha_selected = 1,
   alpha_non_selected = 0.5,
-  colour = "color_test"
+  colour = "color_test",
+  all.colour = "default"
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ netplot_ClusTCR2(
 \item{alpha_non_selected}{Transparency of non-selected clusters (default = 0.5)}
 
 \item{colour}{Colour selected = "color_test" or all = "color_all"}
+
+\item{all.colour}{Colours all points by: rainbow, random, heat.colors, terrain.colors, topo.colors, hcl.colors and default}
 }
 \description{
 Code for displaying the network.

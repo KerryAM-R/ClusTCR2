@@ -4,12 +4,18 @@
 \alias{Motif_from_cluster_file}
 \title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).}
 \usage{
-Motif_from_cluster_file(ClusTCR, Clust_selected = NULL)
+Motif_from_cluster_file(
+  ClusTCR,
+  Clust_selected = NULL,
+  selected_cluster_column = "Clust_size_order"
+)
 }
 \arguments{
 \item{ClusTCR}{Cluster file produce from \link{ClusTCR}}
 
-\item{Clust_selected}{Select which cluster to reivew}
+\item{Clust_selected}{Select which cluster to review}
+
+\item{selected_cluster_column}{select the column "Clust_size_order" of the cluster ordered.}
 }
 \description{
 Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).

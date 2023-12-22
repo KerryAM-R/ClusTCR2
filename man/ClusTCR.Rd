@@ -5,7 +5,7 @@
 \title{Creates ClusTCR matrix
 This function identifies similar CDR3 amino acid sequences based on the same length and V_gene}
 \usage{
-ClusTCR(my_file, allele = NULL, v_gene = "v_call", cores_selected = 4)
+ClusTCR(my_file, allele = NULL, v_gene = "v_call")
 }
 \arguments{
 \item{my_file}{uploaded file with junction_aa (CD3 sequences), variable gene.}

@@ -4,7 +4,7 @@
 \alias{mcl_cluster}
 \title{Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function}
 \usage{
-mcl_cluster(my_file, max.iter = 100, inflation = 1, expansion = 1)
+mcl_cluster(my_file, max.iter = 10, inflation = 1, expansion = 1)
 }
 \arguments{
 \item{my_file}{Matrix file produce from \link{ClusTCR}}
