@@ -197,8 +197,6 @@ ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
     res.all <- as.list(NULL)
     for(j in 1:dim(df_len)[1]) {
       df.clust_1 <- subset(amino_acid_test_top2,amino_acid_test_top2$V_call_len==df_len[j,1])
-      # print(dim(df.clust_1)[1])
-
       if (dim(df.clust_1)[1]>1) {
         res.all[[j]] <- as.data.frame(matrix(nrow = dim(df.clust_1)[1], ncol =  dim(df.clust_1)[1]))
         rownames(res.all[[j]]) <- df.clust_1$Vgene_cdr3
@@ -208,11 +206,11 @@ ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
     }
 
     res.all <- res.all[!sapply(res.all,is.null)]
-    res.all
     sim2 <- as.list(NULL)
-    message("Performing edit distance")
+
     length(res.all)
     for (j in 1:length(res.all))  {
+      message(paste("starting edit distance on",j,"that has",dim(res.all[[j]])[2],"unique sequences"))
       df <- as.data.frame(res.all[[j]])
       for(r in 1:dim(df)[1]) {
         for (i in 1:dim(df)[1]) {
@@ -240,15 +238,11 @@ ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
     for (j in 1:length(res.all)) {
       fsim2[[j]] <- f(sim2[[j]])
     }
-
-    fsim2
-
     message(paste("keeping edit distance of 1"))
-
-
     ham.vals <- as.list(NULL)
 
     for (j in 1:length(fsim2)) {
+      message(paste("Creating source-target files",j,"of",length(fsim2)))
       ham.vals2 <- setNames(
         cbind(
           rev(expand.grid(rownames(fsim2[[j]]), names(fsim2[[j]]))),
@@ -284,20 +278,16 @@ ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
       message("No clusters == 1 edit distance and therefore MCL not performed")
       as.data.frame("No clusters found")
     } else {
-
-      ham.vals2
-
       df_mat2 <- as.list(NULL)
       num.ham.vals2 <- length(ham.vals2)
-      num.ham.vals2
+
       message(paste("Creating target and source object"))
       for (i in 1:num.ham.vals2) {
         df_net3 <- as.data.frame((ham.vals2[[i]][1:2]))
         df_net3$count <- 1
         df_net3 <- df_net3[order(df_net3$source),]
-        message(paste("Creating matrix for MCL"))
+        message(paste("Creating matrix for MCL",i))
         df_mat <- (table(as.character(df_net3$source), as.character(df_net3$target)))
-        message(paste("Matrix complete"))
         df_mat2[[i]] <- df_mat
       }
 
