@@ -14,6 +14,12 @@
 #' @export
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
+  require(DescTools)
+  require(plyr)
+  require(stringr)
+  require(grDevices)
+  require(stats)
+  require(utils)
 
   amino_acid_test_top <- my_file
   amino_acid_test_top2 <- amino_acid_test_top[!duplicated(amino_acid_test_top$junction_aa), ]
@@ -169,7 +175,12 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 #' @export
 
 ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
-
+  require(DescTools)
+  require(plyr)
+  require(stringr)
+  require(grDevices)
+  require(stats)
+  require(utils)
   amino_acid_test_top <- my_file
   amino_acid_test_top2 <- amino_acid_test_top[!duplicated(amino_acid_test_top$junction_aa), ]
   amino_acid_test_top2$len <- nchar(amino_acid_test_top2$junction_aa)

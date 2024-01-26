@@ -8,6 +8,13 @@
 #' @export
 
 mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
+  require(DescTools)
+  require(plyr)
+  require(stringr)
+  require(grDevices)
+  require(stats)
+  require(utils)
+
   stat_process <- Sys.time()
 
   adj.norm <- my_file
@@ -139,7 +146,6 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
                Normalised_tabel = infl.norm)
 }
 
-
 #' Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
 #' @param my_file Matrix file produce from [ClusTCR]
 #' @param max.iter Number of iterations to find the steady state of MCL.
@@ -150,6 +156,13 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
 #' @export
 
 mcl_cluster_large <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
+  require(DescTools)
+  require(plyr)
+  require(stringr)
+  require(grDevices)
+  require(stats)
+  require(utils)
+
   df_mat2 <- my_file
 
   num_large_issue <- length(df_mat2)
@@ -265,9 +278,9 @@ mcl_cluster_large <- function(my_file, max.iter=10, inflation = 1, expansion = 1
     df2$count <- 1
     df3 <- as.data.frame(ddply(df2,"V1",numcolwise(sum)))
     df3 <- df3[order(as.numeric(df3$count),decreasing = T), ]
-    df3$Clust_size_order <- 1:dim(df3)[1]
+    df3$Order <- 1:dim(df3)[1]
     df3$list_pos <- k
-    df3$Clust_size_order_k <- paste(df3$Clust_size_order,k,sep="_")
+    df3$Clust_size_order <- paste(df3$Order,k,sep="_")
     df_num_rep <- as.data.frame(unique(df[,1]))
     names(df_num_rep) <- "V1"
     df_num_rep$cluster <- 1:dim(df_num_rep)[1]
