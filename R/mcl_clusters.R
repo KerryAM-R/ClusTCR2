@@ -3,18 +3,15 @@
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value
-#' @param j part of MCL clustering
 #' @import DescTools
+#' @import plyr
+#' @import stringr
+#' @import grDevices
+#' @import stats
+#' @import utils
 #' @export
 
 mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
-  require(DescTools)
-  require(plyr)
-  require(stringr)
-  require(grDevices)
-  require(stats)
-  require(utils)
-
   stat_process <- Sys.time()
 
   adj.norm <- my_file
@@ -151,17 +148,15 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value
-#' @param j part of MCL clustering
 #' @import DescTools
+#' @import plyr
+#' @import stringr
+#' @import grDevices
+#' @import stats
+#' @import utils
 #' @export
 
 mcl_cluster_large <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
-  require(DescTools)
-  require(plyr)
-  require(stringr)
-  require(grDevices)
-  require(stats)
-  require(utils)
 
   df_mat2 <- my_file
 

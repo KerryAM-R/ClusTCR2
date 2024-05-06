@@ -3,7 +3,6 @@
 #' @param my_file uploaded file with junction_aa (CD3 sequences), variable gene.
 #' @param v_gene Variable gene column name
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
-#' @param cores_selected Chose # of cores for parallel functions
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
 #' @import plyr
@@ -14,13 +13,6 @@
 #' @export
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
-  require(DescTools)
-  require(plyr)
-  require(stringr)
-  require(grDevices)
-  require(stats)
-  require(utils)
-
   amino_acid_test_top <- my_file
   amino_acid_test_top2 <- amino_acid_test_top[!duplicated(amino_acid_test_top$junction_aa), ]
   amino_acid_test_top2$len <- nchar(amino_acid_test_top2$junction_aa)
@@ -164,7 +156,6 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 #' @param my_file uploaded file with junction_aa (CD3 sequences), variable gene.
 #' @param v_gene Variable gene column name
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
-#' @param cores_selected Chose # of cores for parallel functions
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
 #' @import plyr
@@ -175,12 +166,6 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 #' @export
 
 ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
-  require(DescTools)
-  require(plyr)
-  require(stringr)
-  require(grDevices)
-  require(stats)
-  require(utils)
   amino_acid_test_top <- my_file
   amino_acid_test_top2 <- amino_acid_test_top[!duplicated(amino_acid_test_top$junction_aa), ]
   amino_acid_test_top2$len <- nchar(amino_acid_test_top2$junction_aa)

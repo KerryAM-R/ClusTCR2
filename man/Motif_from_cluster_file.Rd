@@ -2,7 +2,7 @@
 % Please edit documentation in R/motif_from_clusterfile.R
 \name{Motif_from_cluster_file}
 \alias{Motif_from_cluster_file}
-\title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).}
+\title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for details ).}
 \usage{
 Motif_from_cluster_file(
   ClusTCR,
@@ -18,5 +18,5 @@ Motif_from_cluster_file(
 \item{selected_cluster_column}{select the column "Clust_size_order" of the cluster ordered.}
 }
 \description{
-Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot} for ).
+Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for details ).
 }

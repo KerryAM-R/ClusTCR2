@@ -9,8 +9,6 @@
 
 motif_plot <- function(ClusTCR, Clust_column_name="cluster",Clust_selected=NULL) {
   source(system.file("Functions","motifStack.functions.R",package = "ClusTCR2"))
-  library(VLF)
-  library(ggseqlogo)
 
 
   net2 <- ClusTCR[[2]]
@@ -75,8 +73,6 @@ motif_plot <- function(ClusTCR, Clust_column_name="cluster",Clust_selected=NULL)
 
 motif_plot_large <- function(ClusTCRFile_large, Clust_column_name="Clust_size_order",Clust_selected=NULL) {
   source(system.file("Functions","motifStack.functions.R",package = "ClusTCR2"))
-  library(VLF)
-  library(ggseqlogo)
 
   df_clust <- ClusTCRFile_large[[1]]
   df_clust$Select_cluster_Name <- df_clust[,names(df_clust) %in% Clust_column_name]

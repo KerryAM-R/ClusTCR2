@@ -1,37 +1,36 @@
 Package: ClusTCR2
-Title: R version of ClusTCR to identifying similar CDR3 sequences based on MCL clustering
+Title: R Version of ClusTCR to Identifying Similar CDR3 Sequences Based on MCL Clustering
 Version: 1.7.1
-Date: 2023-29-03
-Authors@R: c(person("Kerry A.", "Mullan", role = c("aut", "cre"),
+Date: 2024-05-06
+Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
               person("Sebastiaan", "Valkiers", role = c("aut","ctb")),
               person("Kris", "Laukens", role = c("aut","ctb")),
               person("Pieter", "Meysman", role = c("aut","ctb"),
                      email = ""))
-Author: Kerry A. Mullan [aut, cre],
-  Sebastiaan Valkiers [aut],
-  Kris Laukens [aut],
-  Pieter Meysman [aut]
+Author: Kerry A. Mullan [aut,cre],
+  Sebastiaan Valkiers [aut,ctb],
+  Kris Laukens [aut,ctb],
+  Pieter Meysman [aut,ctb]
 Description: Performs CDR3 clustering using MCL with visualisation as a network plot and motif. 
-Maintainer: Kerry A. Mullan, <Kerry.Mullan@uantwerpen.be>
-License: CC0
+Maintainer: "Kerry A. Mullan <Kerry.Mullan@uantwerpen.be>"
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
     DescTools,
-    ggnet,
     ggplot2,
     ggseqlogo,
     network,
     plyr,
     stringr,
+    scales,
+    sna,
     VLF
-Remotes:
-    briatte/ggnet
 biocViews: 
   GeneTarget, 
   SingleCell
