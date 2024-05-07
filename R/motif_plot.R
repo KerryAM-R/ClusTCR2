@@ -9,8 +9,6 @@
 
 motif_plot <- function(ClusTCR, Clust_column_name="cluster",Clust_selected=NULL) {
   source(system.file("Functions","motifStack.functions.R",package = "ClusTCR2"))
-
-
   net2 <- ClusTCR[[2]]
   df_clust <- ClusTCR[[1]]
   colnames(net2) <- paste(colnames(net2),df_clust[,names(df_clust) %in% Clust_column_name],sep="_")

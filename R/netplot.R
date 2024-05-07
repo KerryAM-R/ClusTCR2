@@ -1,4 +1,5 @@
 #' Code for displaying the network.
+#'
 #' @param ClusTCR File produced from mcl_cluster
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster (Re-numbering the original_cluster), Original_cluster, Clust_size_order (Based on cluster size e.g. number of nodes)
 #' @param Clust_selected Select which cluster to label.
@@ -14,11 +15,14 @@
 #' @param colour Colour selected = "color_test" or all = "color_all"
 #' @param all.colour Colours all points by: rainbow, random, heat.colors, terrain.colors, topo.colors, hcl.colors and default
 #' @param filter_plot Filter's plot to remove connects grater than # e.g. 2 = 3 or more connections.
-#' @importFrom ggnet ggnet2
 #' @import ggplot2
+#' @importFrom igraph degree graph.adjacency
+#' @import scales
 #' @importFrom stringr str_sub
-#' @importFrom network as.network
+#' @import network
 #' @export
+
+
 
 netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected_col="purple",selected_text_col="black",selected_text_size=3,non_selected_text_size=2, Clust_column_name="cluster", label = c("Name","cluster","CDR3","V_gene","Len"), non_selected_col="grey80",non_selected_text_col="grey40",alpha_selected=1,alpha_non_selected=0.5, colour = "color_test",all.colour = "default") {
 
@@ -140,7 +144,7 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
 }
 
 #' Copied code from ggnet's ggnet2 function
-#' @name ggnet
+#' @name ggnet2
 #' @param net net plot
 #' @param mode Name of clustering column from mcl_cluster file e.g. cluster (Re-numbering the original_cluster), Original_cluster, Clust_size_order (Based on cluster size e.g. number of nodes)
 #' @param net, mode = "fruchtermanreingold", layout.par = NULL,
@@ -189,11 +193,12 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
 #' @param legend.size = 9
 #' @param legend.position = "right"
 #' @import network
-#' @import sna
+#' @importFrom igraph degree graph.adjacency
+#' @importFrom sna degree gplot.layout.fruchtermanreingold
 #' @import scales
 #' @export
 
-function (net, mode = "fruchtermanreingold", layout.par = NULL,
+ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
           layout.exp = 0, alpha = 1, color = "grey75", shape = 19,
           size = 9, max_size = 9, na.rm = NA, palette = NULL, alpha.palette = NULL,
           alpha.legend = NA, color.palette = palette, color.legend = NA,
@@ -209,7 +214,7 @@ function (net, mode = "fruchtermanreingold", layout.par = NULL,
           arrow.type = "closed", legend.size = 9, legend.position = "right",
           ...)
 {
-  require_pkgs(c("network", "sna", "scales"))
+
   if (class(net) == "igraph" && "intergraph" %in% rownames(installed.packages())) {
     net = intergraph::asNetwork(net)
   }
@@ -222,8 +227,15 @@ function (net, mode = "fruchtermanreingold", layout.par = NULL,
   if (!network::is.network(net)) {
     stop("could not coerce net to a network object")
   }
-  get_v = get("%v%", envir = as.environment("package:network"))
-  get_e = get("%e%", envir = as.environment("package:network"))
+
+  require(network)
+  get_v  <- function (x, attrname) {
+    network::get.vertex.attribute(x, attrname = attrname)
+  }
+
+  get_e <- function (x, attrname) {
+    network::get.edge.value(x, attrname = attrname)
+  }
   set_mode = function(x, mode = network::get.network.attribute(x,
                                                                "bipartite")) {
     c(rep("actor", mode), rep("event", n_nodes - mode))
@@ -672,7 +684,7 @@ function (net, mode = "fruchtermanreingold", layout.par = NULL,
   if (is.numeric(data$alpha)) {
     v_alpha = unique(data$alpha)
     names(v_alpha) = unique(data$alpha)
-    p = p + scale_alpha_manual("", values = v_alpha) + guides(alpha = FALSE)
+    p = p + scale_alpha_manual("", values = v_alpha) + guides(alpha = "none")
   }
   else {
     p = p + scale_alpha_manual(set_name(node.alpha, alpha.legend),
@@ -687,12 +699,12 @@ function (net, mode = "fruchtermanreingold", layout.par = NULL,
   else {
     v_color = unique(data$color)
     names(v_color) = unique(data$color)
-    p = p + scale_color_manual("", values = v_color) + guides(color = FALSE)
+    p = p + scale_color_manual("", values = v_color) + guides(color = "none")
   }
   if (is.numeric(data$shape)) {
     v_shape = unique(data$shape)
     names(v_shape) = unique(data$shape)
-    p = p + scale_shape_manual("", values = v_shape) + guides(shape = FALSE)
+    p = p + scale_shape_manual("", values = v_shape) + guides(shape = "none")
   }
   else {
     p = p + scale_shape_manual(set_name(node.shape, shape.legend),
