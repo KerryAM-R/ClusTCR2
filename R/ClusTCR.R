@@ -5,9 +5,8 @@
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
-#' @import plyr
-#' @import DescTools
-#' @importFrom grDevices rainbow
+#' @importFrom plyr ddply
+#' @importFrom DescTools StrDist
 #' @importFrom stats setNames
 #' @importFrom utils head
 #' @export
@@ -158,9 +157,8 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
 #' @return X by Y matrix of strucutrally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
-#' @import plyr
-#' @import DescTools
-#' @importFrom grDevices rainbow
+#' @importFrom DescTools StrDist
+#' @importFrom plyr ddply
 #' @importFrom stats setNames
 #' @importFrom utils head
 #' @export
@@ -294,3 +292,6 @@ ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
     message("Incorrect V gene column")
   }
 }
+
+
+#' @example example.R

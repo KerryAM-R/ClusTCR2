@@ -16,12 +16,11 @@
 #' @param all.colour Colours all points by: rainbow, random, heat.colors, terrain.colors, topo.colors, hcl.colors and default
 #' @param filter_plot Filter's plot to remove connects grater than # e.g. 2 = 3 or more connections.
 #' @import ggplot2
-#' @importFrom igraph degree graph.adjacency
 #' @import scales
 #' @importFrom stringr str_sub
 #' @import network
 #' @import RColorBrewer
-#' @importFrom grDevices Palettes
+#' @import grDevices
 #' @export
 
 
@@ -195,7 +194,6 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
 #' @param legend.position = "right"
 #' @param ... Other functions in ggplot2
 #' @import network
-#' @importFrom igraph degree graph.adjacency
 #' @importFrom sna degree gplot.layout.fruchtermanreingold
 #' @import scales
 #' @import RColorBrewer
@@ -370,17 +368,9 @@ ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
   x = size
   if (length(x) == 1 && x %in% c("indegree", "outdegree",
                                  "degree", "freeman")) {
-    if ("package:igraph" %in% search()) {
-      y = ifelse(is_dir == "digraph", "directed", "undirected")
-      z = c(indegree = "in", outdegree = "out", degree = "all",
-            freeman = "all")[x]
-      data$size = igraph::degree(igraph::graph.adjacency(as.matrix(net),
-                                                         mode = y), mode = z)
-    }
-    else {
-      data$size = sna::degree(net, gmode = is_dir, cmode = ifelse(x ==
-                                                                    "degree", "freeman", x))
-    }
+
+    data$size = sna::degree(net, gmode = is_dir, cmode = ifelse(x == "degree", "freeman", x))
+
     size.legend = ifelse(is.na(size.legend), x, size.legend)
   }
   x = ifelse(is.na(size.min), 0, size.min)

@@ -3,8 +3,8 @@
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value
-#' @import DescTools
-#' @import plyr
+#' @importFrom plyr ddply numcolwise
+#' @importFrom DescTools %^%
 #' @import stringr
 #' @import grDevices
 #' @import stats
@@ -148,9 +148,9 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value
-#' @import DescTools
-#' @import plyr
+#' @importFrom plyr ddply numcolwise
 #' @import stringr
+#' @importFrom DescTools %^%
 #' @import grDevices
 #' @import stats
 #' @import utils

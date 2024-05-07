@@ -1,6 +1,6 @@
 Package: ClusTCR2
 Title: R Version of ClusTCR to Identifying Similar CDR3 Sequences Based on MCL Clustering
-Version: 1.7.2-05
+Version: 1.7.2.10
 Date: 2024-05-07
 Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
@@ -8,10 +8,7 @@ Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
               person("Kris", "Laukens", role = c("aut","ctb")),
               person("Pieter", "Meysman", role = c("aut","ctb"),
                      email = ""))
-Author: Kerry A. Mullan [aut,cre],
-  Sebastiaan Valkiers [aut,ctb],
-  Kris Laukens [aut,ctb],
-  Pieter Meysman [aut,ctb]
+Author: Kerry A. Mullan [aut, cre], Sebastiaan Valkiers [aut, ctb], Kris Laukens [aut, ctb], Pieter Meysman [aut, ctb]
 Description: Performs CDR3 clustering using MCL with visualisation as a network plot and motif. 
 Maintainer: Kerry A. Mullan <Kerry.Mullan@uantwerpen.be>
 License: GPL (>= 3)
@@ -25,7 +22,6 @@ Imports:
     DescTools,
     ggplot2,
     ggseqlogo,
-    igraph,
     network,
     plyr,
     RColorBrewer,
