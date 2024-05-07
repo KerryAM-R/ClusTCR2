@@ -20,6 +20,8 @@
 #' @import scales
 #' @importFrom stringr str_sub
 #' @import network
+#' @import RColorBrewer
+#' @importFrom grDevices Palettes
 #' @export
 
 
@@ -74,10 +76,7 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
   df_clust <- df_clust[order(df_clust$order),]
   colnames(net2) <- paste(colnames(net2), df_clust[,names(df_clust) %in% c(Clust_column_name)], df_clust$col,sep = "_")
 
-
-
-  net = as.network(net2,ignore.eval = FALSE, loops = F, names.eval = 'testValue')
-
+  net = network::as.network(net2,ignore.eval = FALSE, loops = F, names.eval = 'testValue')
 
   z <- net$gal$n
   for (i in 1:z) {
@@ -145,9 +144,11 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
 
 #' Copied code from ggnet's ggnet2 function
 #' @name ggnet2
-#' @param net net plot
+#' @param net net plot from step 2.
 #' @param mode Name of clustering column from mcl_cluster file e.g. cluster (Re-numbering the original_cluster), Original_cluster, Clust_size_order (Based on cluster size e.g. number of nodes)
-#' @param net, mode = "fruchtermanreingold", layout.par = NULL,
+#' @param mode = "fruchtermanreingold"
+#' @param layout.par = NULL,
+#' @param layout.exp = 0
 #' @param layout.exp = 0
 #' @param alpha = 1
 #' @param color = "grey75"
@@ -192,10 +193,12 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
 #' @param arrow.type = "closed"
 #' @param legend.size = 9
 #' @param legend.position = "right"
+#' @param ... Other functions in ggplot2
 #' @import network
 #' @importFrom igraph degree graph.adjacency
 #' @importFrom sna degree gplot.layout.fruchtermanreingold
 #' @import scales
+#' @import RColorBrewer
 #' @export
 
 ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
@@ -215,20 +218,8 @@ ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
           ...)
 {
 
-  if (class(net) == "igraph" && "intergraph" %in% rownames(installed.packages())) {
-    net = intergraph::asNetwork(net)
-  }
-  else if (class("net") == "igraph") {
-    stop("install the 'intergraph' package to use igraph objects with ggnet2")
-  }
-  if (!network::is.network(net)) {
-    net = try(network::network(net), silent = TRUE)
-  }
-  if (!network::is.network(net)) {
-    stop("could not coerce net to a network object")
-  }
+  net = try(network::network(net), silent = TRUE)
 
-  require(network)
   get_v  <- function (x, attrname) {
     network::get.vertex.attribute(x, attrname = attrname)
   }

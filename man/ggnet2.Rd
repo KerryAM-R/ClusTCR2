@@ -56,9 +56,11 @@ ggnet2(
 )
 }
 \arguments{
-\item{net}{net plot}
+\item{net}{net plot from step 2.}
 
-\item{mode}{Name of clustering column from mcl_cluster file e.g. cluster (Re-numbering the original_cluster), Original_cluster, Clust_size_order (Based on cluster size e.g. number of nodes)}
+\item{mode}{= "fruchtermanreingold"}
+
+\item{layout.par}{= NULL,}
 
 \item{layout.exp}{= 0}
 
@@ -148,7 +150,7 @@ ggnet2(
 
 \item{legend.position}{= "right"}
 
-\item{net, }{mode = "fruchtermanreingold", layout.par = NULL,}
+\item{...}{Other functions in ggplot2}
 }
 \description{
 Copied code from ggnet's ggnet2 function
