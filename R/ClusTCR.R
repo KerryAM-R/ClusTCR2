@@ -9,6 +9,13 @@
 #' @importFrom DescTools StrDist
 #' @importFrom stats setNames
 #' @importFrom utils head
+#' @examples
+#' # Example usage of mcl_cluster function with a stored file
+#' example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+#' # Perform clustering using mcl_cluster function
+#' step1 <- ClusTCR(example_file,allele = FALSE)
+#' # Print the result
+#' print(step1)
 #' @export
 
 ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
@@ -294,4 +301,3 @@ ClusTCR_Large <- function(my_file, allele=NULL, v_gene = "v_call") {
 }
 
 
-#' @example example.R

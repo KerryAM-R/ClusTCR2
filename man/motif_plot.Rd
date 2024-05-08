@@ -4,7 +4,11 @@
 \alias{motif_plot}
 \title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).}
 \usage{
-motif_plot(ClusTCR, Clust_column_name = "cluster", Clust_selected = NULL)
+motif_plot(
+  ClusTCR,
+  Clust_column_name = "Clust_size_order",
+  Clust_selected = NULL
+)
 }
 \arguments{
 \item{ClusTCR}{Matrix file produce from \link{mcl_cluster}}
@@ -15,4 +19,14 @@ motif_plot(ClusTCR, Clust_column_name = "cluster", Clust_selected = NULL)
 }
 \description{
 Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).
+}
+\examples{
+# Example usage of mcl_cluster function with a stored file
+example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+# Perform clustering using mcl_cluster function
+step1 <- ClusTCR(example_file,allele = FALSE)
+# perform mcl
+step2 <- mcl_cluster(step1)
+# print the motif plot for the simple clustering
+print(motif_plot(step2,Clust_selected = 1))
 }

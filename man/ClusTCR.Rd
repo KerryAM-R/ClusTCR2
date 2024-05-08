@@ -21,3 +21,11 @@ X by Y matrix of strucutrally related CDR3 sequences.
 Creates ClusTCR matrix
 This function identifies similar CDR3 amino acid sequences based on the same length and V_gene
 }
+\examples{
+# Example usage of mcl_cluster function with a stored file
+example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+# Perform clustering using mcl_cluster function
+step1 <- ClusTCR(example_file,allele = FALSE)
+# Print the result
+print(step1)
+}

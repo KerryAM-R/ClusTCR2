@@ -18,3 +18,11 @@ mcl_cluster(my_file, max.iter = 10, inflation = 1, expansion = 1)
 \description{
 Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
 }
+\examples{
+# Example usage of mcl_cluster function with a stored file
+example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+# Perform clustering using mcl_cluster function
+step1 <- ClusTCR(example_file,allele = FALSE)
+# perform mcl
+step2 <- mcl_cluster(step1)
+}

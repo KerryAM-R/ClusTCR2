@@ -1,4 +1,5 @@
 #' Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
+#' @name mcl_cluster
 #' @param my_file Matrix file produce from [ClusTCR]
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
@@ -9,6 +10,13 @@
 #' @import grDevices
 #' @import stats
 #' @import utils
+#' @examples
+#' # Example usage of mcl_cluster function with a stored file
+#' example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+#' # Perform clustering using mcl_cluster function
+#' step1 <- ClusTCR(example_file,allele = FALSE)
+#' # perform mcl
+#' step2 <- mcl_cluster(step1)
 #' @export
 
 mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
@@ -144,6 +152,7 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
 }
 
 #' Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
+#' @name mcl_cluster_large
 #' @param my_file Matrix file produce from [ClusTCR]
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
@@ -304,3 +313,6 @@ mcl_cluster_large <- function(my_file, max.iter=10, inflation = 1, expansion = 1
                Normalised_tabel = infl.norm_mat)
   mylist
 }
+
+
+

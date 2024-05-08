@@ -56,3 +56,13 @@ netplot_ClusTCR2(
 \description{
 Code for displaying the network.
 }
+\examples{
+# Example usage of mcl_cluster function with a stored file
+example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+# Perform clustering using mcl_cluster function
+step1 <- ClusTCR(example_file,allele = FALSE)
+# perform mcl
+step2 <- mcl_cluster(step1)
+# print the clustering plot after performing step 1 and step 2
+print(netplot_ClusTCR2(step2, label = "Name_selected"))
+}

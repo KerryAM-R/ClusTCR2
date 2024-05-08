@@ -5,9 +5,18 @@
 #' @importFrom  VLF aa.count.function
 #' @importFrom ggseqlogo ggseqlogo
 #' @import ggplot2
+#' @examples
+#' # Example usage of mcl_cluster function with a stored file
+#' example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
+#' # Perform clustering using mcl_cluster function
+#' step1 <- ClusTCR(example_file,allele = FALSE)
+#' # perform mcl
+#' step2 <- mcl_cluster(step1)
+#' # print the motif plot for the simple clustering
+#' print(motif_plot(step2,Clust_selected = 1))
 #' @export
 
-motif_plot <- function(ClusTCR, Clust_column_name="cluster",Clust_selected=NULL) {
+motif_plot <- function(ClusTCR, Clust_column_name="Clust_size_order",Clust_selected=NULL) {
   source(system.file("Functions","motifStack.functions.R",package = "ClusTCR2"))
   net2 <- ClusTCR[[2]]
   df_clust <- ClusTCR[[1]]
