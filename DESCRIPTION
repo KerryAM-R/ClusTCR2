@@ -1,7 +1,7 @@
 Package: ClusTCR2
 Title: R Version of ClusTCR to Identifying Similar CDR3 Sequences Based on MCL Clustering
-Version: 1.7.2.15
-Date: 2024-05-07
+Version: 1.7.2.16
+Date: 2024-05-08
 Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
               person("Sebastiaan", "Valkiers", role = c("aut","ctb")),

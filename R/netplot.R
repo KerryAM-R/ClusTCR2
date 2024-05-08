@@ -620,7 +620,7 @@ ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
 #' @param non_selected_text_col Color of selected clusters text (Default = grey40)
 #' @param selected_text_size Text size of selected cluster (Default = 3)
 #' @param non_selected_text_size Text size of non-selected clusters (Default = 2)
-#' @param label Name to display on cluster: Name (CDR3_V_gene_Cluster), cluster, CDR3, V_gene, Len (length of CDR3 sequence),CDR3_selected,Name_selected,cluster_selected, (_selected only prints names of the chosen cluster), None
+#' @param label Name to display on cluster: Name (CDR3_V_gene_Cluster), cluster, CDR3, V_gene, Len (length of CDR3 sequence), CDR3_selected, V_gene_selected, Name_selected,cluster_selected, (_selected only prints names of the chosen cluster), None
 #' @param alpha_selected Transparency of selected cluster (default = 1)
 #' @param alpha_non_selected Transparency of non-selected clusters (default = 0.5)
 #' @param colour Colour selected = "color_test" or all = "color_all"
@@ -735,7 +735,11 @@ netplot_ClusTCR2 <- function(ClusTCR, filter_plot = 0, Clust_selected=1,selected
   }
 
   for (i in 1:z) {
-    net$val[[i]]$CDR3_selected <- ifelse(net$val[[i]]$cluster %in% Clust_selected, net$val[[i]]$V_gene, "")
+    net$val[[i]]$CDR3_selected <- ifelse(net$val[[i]]$cluster %in% Clust_selected, net$val[[i]]$CDR3, "")
+  }
+
+  for (i in 1:z) {
+    net$val[[i]]$V_gene_selected <- ifelse(net$val[[i]]$cluster %in% Clust_selected, net$val[[i]]$V_gene, "")
   }
 
   for (i in 1:z) {
