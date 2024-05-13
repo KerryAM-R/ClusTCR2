@@ -1,7 +1,7 @@
 Package: ClusTCR2
 Title: ClusTCR to Identifying Similar T Cell Receptor Hypervariable Sequences
 Version: 1.7.3
-Date: 2024-05-08
+Date: 2024-05-13
 Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
               person("Sebastiaan", "Valkiers", role = c("aut","ctb")),
