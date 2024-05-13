@@ -112,19 +112,21 @@ ggnet2(
 
 \item{label.trim}{= FALSE}
 
-\item{node.alpha}{= alpha}
+\item{node.alpha}{see \code{alpha}}
 
-\item{node.color}{= color}
+\item{node.color}{see \code{color}}
 
-\item{node.label}{= label}
+\item{node.label}{see \code{label}}
 
-\item{node.shape}{= shape}
+\item{node.shape}{see \code{shape}}
 
-\item{node.size}{= size}
+\item{node.size}{see \code{size}}
 
 \item{edge.alpha}{= 1}
 
-\item{edge.color}{= "grey50"}
+\item{edge.color}{the color of the edges, as a color value, a vector of color
+values, or as an edge attribute containing color values.
+Defaults to \code{"grey50"}.}
 
 \item{edge.lty}{= "solid"}
 

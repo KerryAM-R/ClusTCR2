@@ -1,6 +1,6 @@
 Package: ClusTCR2
-Title: R Version of ClusTCR to Identifying Similar CDR3 Sequences Based on MCL Clustering
-Version: 1.7.2.16
+Title: ClusTCR to Identifying Similar T Cell Receptor Hypervariable Sequences
+Version: 1.7.3
 Date: 2024-05-08
 Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
                      email = "Kerry.Mullan@uantwerpen.be"),
@@ -9,7 +9,8 @@ Authors@R: c(person("Kerry A.", "Mullan", role = c("aut","cre"),
               person("Pieter", "Meysman", role = c("aut","ctb"),
                      email = ""))
 Author: Kerry A. Mullan [aut, cre], Sebastiaan Valkiers [aut, ctb], Kris Laukens [aut, ctb], Pieter Meysman [aut, ctb]
-Description: Performs CDR3 clustering using MCL with visualisation as a network plot and motif. 
+Description: This package was based on the ClusTCR application in python. This program using one edit distance (hamming distance) to identify if the complement-determining region three (CDR3) in the hypervariable section of the T cell receptor (TCR) have a similar seqeunce. This also takes into cosideration the variable gene (v_gene) as well from the same length. The second part of the package using the Markov Cluster Algorithm (MCL) to identify the clusters in an undirected graph. This outputs the summmary of the amino acid motif and a network plot. This package was built for single cell RNA-seq with TCR-seq data and is incorporated into the Single cell TCR and Expression Grouped Ontologies (STEGO) shiny R application. 
+References: Sebastiaan Valkiers, Max Van Houcke, Kris Laukens, Pieter Meysman (2021) <doi:10.1093/bioinformatics/btab446>, Kerry A. Mullan, My Ha, Sebastiaan Valkiers, Nicky de Vrij, Benson Ogunjimi, Kris Laukens, Pieter Meysman (2023) <doi:10.1101/2023.09.27.559702>.
 Maintainer: Kerry A. Mullan <Kerry.Mullan@uantwerpen.be>
 License: GPL (>= 3)
 Encoding: UTF-8

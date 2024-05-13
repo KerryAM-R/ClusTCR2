@@ -39,7 +39,7 @@ netplot_ClusTCR2(
 
 \item{Clust_column_name}{Name of clustering column from mcl_cluster file e.g. cluster (Re-numbering the original_cluster), Original_cluster, Clust_size_order (Based on cluster size e.g. number of nodes)}
 
-\item{label}{Name to display on cluster: Name (CDR3_V_gene_Cluster), cluster, CDR3, V_gene, Len (length of CDR3 sequence),CDR3_selected,Name_selected,cluster_selected, (_selected only prints names of the chosen cluster), None}
+\item{label}{Name to display on cluster: Name (CDR3_V_gene_Cluster), cluster, CDR3, V_gene, Len (length of CDR3 sequence), CDR3_selected, V_gene_selected, Name_selected,cluster_selected, (_selected only prints names of the chosen cluster), None}
 
 \item{non_selected_col}{Color of selected cluster (Default = grey80)}
 
