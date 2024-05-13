@@ -44,7 +44,7 @@ Visualization: Network plot
 
 ```{r, echo=TRUE}
 # Visualization of the network plot
-netplot_ClusTCR2(step2, label = "Name_selected")
+netplot_ClusTCR2(step2, label = "Name_selected", Clust_selected = 1)
 ```
 
 Visualization: Motif plot
