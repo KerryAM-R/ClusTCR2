@@ -3,17 +3,17 @@
 #' @param my_file uploaded file with junction_aa (CD3 sequences), variable gene.
 #' @param v_gene Variable gene column name
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
-#' @return X by Y matrix of strucutrally related CDR3 sequences.
+#' @return X by Y matrix of structurally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
-#' @importFrom plyr ddply
 #' @importFrom DescTools StrDist
+#' @importFrom plyr ddply
 #' @importFrom stats setNames
 #' @importFrom utils head
 #' @examples
-#' # Example usage of mcl_cluster function with a stored file
-#' example_file <- read.csv(system.file("extdata", "my_data.csv",package = "ClusTCR2"))
-#' # Perform clustering using mcl_cluster function
-#' step1 <- ClusTCR(example_file,allele = FALSE)
+#' # Example usage of ClusTCR function with a stored file
+#' example_file <- read.csv(system.file("extdata", "my_data.csv", package = "ClusTCR2"))
+#' # Perform clustering using ClusTCR function
+#' step1 <- ClusTCR(example_file, allele = FALSE)
 #' # Print the result
 #' print(step1)
 #' @export
@@ -162,7 +162,7 @@ ClusTCR <- function(my_file, allele=NULL, v_gene = "v_call") {
 #' @param my_file uploaded file with junction_aa (CD3 sequences), variable gene.
 #' @param v_gene Variable gene column name
 #' @param allele The allele, if present as *00 will be removed if the user requires it.
-#' @return X by Y matrix of strucutrally related CDR3 sequences.
+#' @return X by Y matrix of structurally related CDR3 sequences.
 #' @importFrom stringr str_split_fixed
 #' @importFrom DescTools StrDist
 #' @importFrom plyr ddply

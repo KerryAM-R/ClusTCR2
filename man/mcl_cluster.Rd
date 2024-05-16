@@ -2,7 +2,7 @@
 % Please edit documentation in R/mcl_clusters.R
 \name{mcl_cluster}
 \alias{mcl_cluster}
-\title{Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function}
+\title{Create the files for labeling the linked clusters from ClusTCR_list_to_matrix function}
 \usage{
 mcl_cluster(my_file, max.iter = 10, inflation = 1, expansion = 1)
 }
@@ -15,8 +15,15 @@ mcl_cluster(my_file, max.iter = 10, inflation = 1, expansion = 1)
 
 \item{expansion}{numeric value}
 }
+\value{
+A list containing two elements:
+\itemize{
+\item 'Cluster_lab': Data frame containing information about the clusters
+\item 'Normalised_tabel': Normalized table used in the clustering process
+}
+}
 \description{
-Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
+Create the files for labeling the linked clusters from ClusTCR_list_to_matrix function
 }
 \examples{
 # Example usage of mcl_cluster function with a stored file

@@ -53,6 +53,9 @@ netplot_ClusTCR2(
 
 \item{all.colour}{Colours all points by: rainbow, random, heat.colors, terrain.colors, topo.colors, hcl.colors and default}
 }
+\value{
+A ggplot object displaying the network plot.
+}
 \description{
 Code for displaying the network.
 }

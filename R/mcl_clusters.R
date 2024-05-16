@@ -1,12 +1,15 @@
-#' Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
+#' Create the files for labeling the linked clusters from ClusTCR_list_to_matrix function
 #' @name mcl_cluster
 #' @param my_file Matrix file produce from [ClusTCR]
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value
+#' @return A list containing two elements:
+#'   - 'Cluster_lab': Data frame containing information about the clusters
+#'   - 'Normalised_tabel': Normalized table used in the clustering process
 #' @importFrom plyr ddply numcolwise
-#' @importFrom DescTools %^%
 #' @import stringr
+#' @importFrom DescTools %^%
 #' @import grDevices
 #' @import stats
 #' @import utils
@@ -151,12 +154,15 @@ mcl_cluster <- function(my_file, max.iter=10, inflation = 1, expansion = 1) {
                Normalised_tabel = infl.norm)
 }
 
-#' Create the files for labelling the linked clusters from ClusTCR_list_to_matrix function
+#' Create the files for labeling the linked clusters from ClusTCR_list_to_matrix function
 #' @name mcl_cluster_large
 #' @param my_file Matrix file produce from [ClusTCR]
 #' @param max.iter Number of iterations to find the steady state of MCL.
 #' @param inflation numeric value
 #' @param expansion numeric value
+#' @return A list containing two elements:
+#'   - 'Cluster_lab': Data frame containing information about the clusters
+#'   - 'Normalised_tabel': Normalized table used in the clustering process
 #' @importFrom plyr ddply numcolwise
 #' @import stringr
 #' @importFrom DescTools %^%

@@ -2,7 +2,7 @@
 % Please edit documentation in R/motif_plot.R
 \name{motif_plot_large}
 \alias{motif_plot_large}
-\title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).}
+\title{Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for details).}
 \usage{
 motif_plot_large(
   ClusTCRFile_large,
@@ -11,12 +11,15 @@ motif_plot_large(
 )
 }
 \arguments{
-\item{ClusTCRFile_large}{Matrix file produce from \link{mcl_cluster_large}}
+\item{ClusTCRFile_large}{Matrix file produced from \link{mcl_cluster_large}.}
 
-\item{Clust_column_name}{Name of clustering column from mcl_cluster file e.g. cluster}
+\item{Clust_column_name}{Name of clustering column from mcl_cluster file e.g. cluster.}
 
 \item{Clust_selected}{Select which cluster to display. Only one at a time.}
 }
+\value{
+A ggplot object representing the motif.
+}
 \description{
-Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).
+Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for details).
 }

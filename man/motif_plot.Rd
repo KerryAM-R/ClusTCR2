@@ -17,6 +17,9 @@ motif_plot(
 
 \item{Clust_selected}{Select which cluster to display. Only one at a time.}
 }
+\value{
+A ggplot object representing the motif.
+}
 \description{
 Code for plotting the Motif based on a specific CDR3 length and V gene (see \link{netplot_ClusTCR2} for ).
 }

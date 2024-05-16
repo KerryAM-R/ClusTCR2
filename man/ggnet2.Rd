@@ -154,6 +154,9 @@ Defaults to \code{"grey50"}.}
 
 \item{...}{Other functions in ggplot2}
 }
+\value{
+A ggplot object displaying the network plot.
+}
 \description{
 Copied code from ggnet's ggnet2 function
 }

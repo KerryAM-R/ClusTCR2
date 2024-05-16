@@ -1,7 +1,8 @@
-#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot_ClusTCR2] for details ).
-#' @param ClusTCR Cluster file produce from [ClusTCR]
-#' @param Clust_selected Select which cluster to review
-#' @param selected_cluster_column select the column "Clust_size_order" of the cluster ordered.
+#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot_ClusTCR2] for details).
+#' @param ClusTCR Cluster file produced from [mcl_cluster].
+#' @param Clust_selected Select which cluster to review.
+#' @param selected_cluster_column Select the column "Clust_size_order" of the cluster ordered.
+#' @return A ggplot object representing the motif.
 #' @importFrom  VLF aa.count.function
 #' @importFrom ggseqlogo ggseqlogo
 #' @import ggplot2

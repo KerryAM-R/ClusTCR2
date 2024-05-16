@@ -2,6 +2,7 @@
 #' @param ClusTCR Matrix file produce from [mcl_cluster]
 #' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster
 #' @param Clust_selected Select which cluster to display. Only one at a time.
+#' @return A ggplot object representing the motif.
 #' @importFrom  VLF aa.count.function
 #' @importFrom ggseqlogo ggseqlogo
 #' @import ggplot2
@@ -69,10 +70,11 @@ motif_plot <- function(ClusTCR, Clust_column_name="Clust_size_order",Clust_selec
   }
 }
 
-#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot_ClusTCR2] for ).
-#' @param ClusTCRFile_large Matrix file produce from [mcl_cluster_large]
-#' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster
+#' Code for plotting the Motif based on a specific CDR3 length and V gene (see [netplot_ClusTCR2] for details).
+#' @param ClusTCRFile_large Matrix file produced from [mcl_cluster_large].
+#' @param Clust_column_name Name of clustering column from mcl_cluster file e.g. cluster.
 #' @param Clust_selected Select which cluster to display. Only one at a time.
+#' @return A ggplot object representing the motif.
 #' @importFrom  VLF aa.count.function
 #' @importFrom ggseqlogo ggseqlogo
 #' @import ggplot2

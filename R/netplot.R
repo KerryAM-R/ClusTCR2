@@ -52,6 +52,7 @@
 #' @param legend.size = 9
 #' @param legend.position = "right"
 #' @param ... Other functions in ggplot2
+#' @return A ggplot object displaying the network plot.
 #' @import network
 #' @importFrom sna degree gplot.layout.fruchtermanreingold
 #' @import scales
@@ -336,8 +337,7 @@ ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
     x = unique(data$color)
   }
 
-  if (length(x) == 1 && "RColorBrewer" %in% rownames(installed.packages()) &&
-      x %in% rownames(RColorBrewer::brewer.pal.info)) {
+  if (length(x) == 1 && x %in% rownames(RColorBrewer::brewer.pal.info)) {
     data$color = factor(data$color)
     n_groups = length(levels(data$color))
     n_colors = RColorBrewer::brewer.pal.info[x, "maxcolors"]
@@ -345,8 +345,7 @@ ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
       stop(paste0("too many node groups (", n_groups,
                   ") for ", "ColorBrewer palette ", x, " (max: ",
                   n_colors, ")"))
-    }
-    else if (n_groups < 3) {
+    } else if (n_groups < 3) {
       n_groups = 3
     }
     x = RColorBrewer::brewer.pal(n_groups, x)[1:length(levels(data$color))]
@@ -644,6 +643,7 @@ ggnet2 <- function (net, mode = "fruchtermanreingold", layout.par = NULL,
 #' @param colour Colour selected = "color_test" or all = "color_all"
 #' @param all.colour Colours all points by: rainbow, random, heat.colors, terrain.colors, topo.colors, hcl.colors and default
 #' @param filter_plot Filter's plot to remove connects grater than # e.g. 2 = 3 or more connections.
+#' @return A ggplot object displaying the network plot.
 #' @import ggplot2
 #' @import scales
 #' @importFrom stringr str_sub

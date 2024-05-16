@@ -15,7 +15,7 @@ ClusTCR_Large(my_file, allele = NULL, v_gene = "v_call")
 \item{v_gene}{Variable gene column name}
 }
 \value{
-X by Y matrix of strucutrally related CDR3 sequences.
+X by Y matrix of structurally related CDR3 sequences.
 }
 \description{
 Creates ClusTCR matrix
